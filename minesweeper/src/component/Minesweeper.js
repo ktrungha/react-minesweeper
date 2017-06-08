@@ -133,9 +133,9 @@ class Minesweeper extends React.Component {
 	}
 
 	render() {
-		let statusImg = '/img/smiley.png';
+		let statusImg = 'img/smiley.png';
 		if (this.state.status === 1) {
-			statusImg = '/img/win.png';
+			statusImg = 'img/win.png';
 		} else if (this.state.status === 2) {
 			statusImg = 'img/lose.png';
 		}
