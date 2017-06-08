@@ -1,0 +1,33 @@
+.Minesweeper {
+	font-family: Tahoma, Geneva, sans-serif;
+	margin: auto;
+	background-color: #c0c0c0;
+}
+
+.MinesweeperInfoBar {
+	text-align: center;
+}
+
+.MinesweeperInfoBar img {
+	padding: 5px;
+	vertical-align: middle;
+}
+
+.MinesweeperLevelBar {
+	text-align: center;
+}
+
+.MinesweeperLevelBar div {
+	padding: 10px;
+	display: inline-block;
+}
+
+.MinesweeperGridRow {
+	padding: 0;
+	margin: 0;
+	background-color: #c0c0c0;
+}
+
+.MinesweeperGridRow {
+	height: 32px;
+}
