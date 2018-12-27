@@ -3,12 +3,8 @@
 	width: 32px;
 	height: 32px;
 	line-height: 32px;
-	border: solid 1px grey;
+	box-shadow: inset 0 0 0 1px grey;
 	text-align: center;
 	vertical-align: middle;
-}
-
-.Cell > div > img {
-	text-align: center;
-	vertical-align: middle;
+	position: relative;
 }

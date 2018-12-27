@@ -1,16 +1,20 @@
 .Minesweeper {
 	font-family: Tahoma, Geneva, sans-serif;
-	margin: auto;
+	margin: 20px auto;
 	background-color: #c0c0c0;
+	width: fit-content;
 }
 
 .MinesweeperInfoBar {
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.MinesweeperInfoBar img {
-	padding: 5px;
-	vertical-align: middle;
+.MinesweeperInfoBar > div {
+	flex: 1;
+	text-align: center;
+	white-space: nowrap;
 }
 
 .MinesweeperLevelBar {
@@ -22,12 +26,15 @@
 	display: inline-block;
 }
 
+.MinesweeperGrid {
+	width: fit-content;
+	margin: auto;
+}
+
 .MinesweeperGridRow {
 	padding: 0;
 	margin: 0;
 	background-color: #c0c0c0;
-}
-
-.MinesweeperGridRow {
-	height: 32px;
+	width: fit-content;
+	white-space: nowrap;
 }

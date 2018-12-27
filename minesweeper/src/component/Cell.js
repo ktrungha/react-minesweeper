@@ -1,67 +1,76 @@
-import React from 'react';
-import './Cell.css';
+import React from "react";
+import "./Cell.css";
+import { getCellColor } from "../logic";
 
 class Cell extends React.Component {
-	render() {
-		return <div className='Cell' onClick={this.props.onClick}
-			onContextMenu={this.props.onClick}
-		>{this.renderContent()}</div>;
-	}
-	
-	renderContent() {
-		if (this.props.status === 0 || this.props.status === 1) {
-			if (!this.props.cell.checked) {
-				let flag = null;
-				if (this.props.cell.flag) {
-					flag = <img src='img/flag.png' alt='' style={{position: 'absolute', left:5, top:5}}/>;
-				}
-				return <div style={{position: 'relative'}}><img src='img/tile.png' alt=''/>{flag}</div>
-			} else {
-				if (this.props.cell.surroundingMineCount > 0) {
-					let color = this.color(this.props.cell.surroundingMineCount);
-					return <div style={{color: color}}>{this.props.cell.surroundingMineCount}</div>
-				} else {
-					return <div> </div>
-				}
-			}
-		} else if (this.props.status === 2) {
-			if (this.props.cell.mine) {
-				if (!this.props.cell.checked) {
-					return <img src='img/mine.png' alt=''/>;
-				} else {
-					return <img src='img/explodedMine.png' alt=''/>;
-				}
-			} else {
-				if (this.props.cell.surroundingMineCount > 0) {
-					let color = this.color(this.props.cell.surroundingMineCount);
-					return <div style={{color: color}}>{this.props.cell.surroundingMineCount}</div>
-				} else {
-					return <div> </div>
-				}
-			}
-		}
-		
-	}
-	
-	color(num) {
-		if (this.props.cell.surroundingMineCount === 1) {
-			return 'blue';
-		} else if (this.props.cell.surroundingMineCount === 2) {
-			return 'green';
-		} else if (this.props.cell.surroundingMineCount === 3) {
-			return 'red';
-		} else if (this.props.cell.surroundingMineCount === 4) {
-			return '#000099';
-		} else if (this.props.cell.surroundingMineCount === 5) {
-			return 'brown';
-		} else if (this.props.cell.surroundingMineCount === 6) {
-			return '#3399ff';
-		} else if (this.props.cell.surroundingMineCount === 7) {
-			return 'black';
-		} else if (this.props.cell.surroundingMineCount === 8) {
-			return 'grey';
-		}
-	}
+  render() {
+    return (
+      <div
+        className="Cell"
+        onClick={this.props.onClick}
+        onContextMenu={this.props.onClick}
+      >
+        {this.renderContent()}
+      </div>
+    );
+  }
+
+  renderContent() {
+    const { cell, status } = this.props;
+    if (status === 0 || status === 1) {
+      if (!cell.checked) {
+        return (
+          <>
+            <img
+              style={{
+                backgroundColor: "transparent",
+                width: "100%",
+                height: "100%"
+              }}
+              src="img/tile.png"
+              alt=""
+            />
+            {cell.flag && (
+              <img
+                src="img/flag.png"
+                alt=""
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)"
+                }}
+              />
+            )}
+          </>
+        );
+      } else {
+        if (cell.surroundingMineCount > 0) {
+          let color = getCellColor(cell.surroundingMineCount);
+          return (
+            <div style={{ color: color }}>{cell.surroundingMineCount}</div>
+          );
+        } else {
+          return <div> </div>;
+        }
+      }
+    } else if (status === 2) {
+      if (cell.mine) {
+        if (!cell.checked) {
+          return <img src="img/mine.png" alt="" />;
+        } else {
+          return <img src="img/explodedMine.png" alt="" />;
+        }
+      } else {
+        if (cell.surroundingMineCount > 0) {
+          const color = getCellColor(cell.surroundingMineCount);
+          return <div style={{ color }}>{cell.surroundingMineCount}</div>;
+        } else {
+          return <div> </div>;
+        }
+      }
+    }
+  }
 }
 
 export default Cell;
